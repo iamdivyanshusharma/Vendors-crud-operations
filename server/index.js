@@ -22,6 +22,27 @@ app.get("/",(req,res)=>{
     
 })
 
+app.use((req,res,next)=>{
+    cont secretCode =req.query.secret;
+    if(secretCode==='1234'){
+        req.isAuthorized= true;
+    }
+    else{
+        res.isAuthorized= false;
+    }
+next();
+});
+
+app.get("/auth",(req,res)=>{
+    if(isAuthorized){
+        res.send("you are authorizes");
+
+    }
+    else{
+        res.send("you are not authorized");
+    }
+})
+
 app.use(express.static(path.join(__dirname,'views')))
 
 app.listen(PORT,()=>
