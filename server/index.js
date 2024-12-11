@@ -23,7 +23,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use((req,res,next)=>{
-    cont secretCode =req.query.secret;
+    const secretCode =req.query.secret;
     if(secretCode==='1234'){
         req.isAuthorized= true;
     }
@@ -46,4 +46,4 @@ app.get("/auth",(req,res)=>{
 app.use(express.static(path.join(__dirname,'views')))
 
 app.listen(PORT,()=>
-    {console.log('Server is running on http://localhost:${PORT}')})
+    {console.log(`Server is running on http://localhost:${PORT}`)})
