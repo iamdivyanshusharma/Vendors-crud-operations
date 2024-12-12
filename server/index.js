@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+ 
 
 dotenv.config();
 
@@ -10,9 +11,10 @@ export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 const app=express()
 
-const PORT =8000;
+const PORT =1000;
 
 app.get("/",(req,res)=>{
+    console.log(__dirname);
     res.sendFile(path.join(__dirname,"views",'cafe.html')
     )
 })
@@ -33,7 +35,7 @@ app.use((req,res,next)=>{
 next();
 });
 
-app.get("/auth",(req,res)=>{
+app.get("/divyanshu",(req,res)=>{
     if(isAuthorized){
         res.send("you are authorizes");
 
